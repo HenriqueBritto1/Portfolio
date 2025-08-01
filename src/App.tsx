@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Instagram, ExternalLink, X, Menu, Mail, MapPin, Phone, Globe } from 'lucide-react';
+import Projeto1 from './assets/Projeto1.jpeg';
+import Projeto2 from './assets/Projeto2.jpeg';
+import Projeto3 from './assets/Projeto3.jpeg';
 
 interface Project {
   id: number;
@@ -9,7 +12,6 @@ interface Project {
   image: string;
   technologies: string[];
   githubUrl?: string;
-  liveUrl?: string;
 }
 
 interface Translations {
@@ -176,30 +178,27 @@ const projectsData: { [key: string]: Project[] } = {
       title: "Student Management System",
       description: "Academic project built with Java and SQL database",
       longDescription: "In development...",
-      image: "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto1,
       technologies: ["Java", "MySQL"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     },
     {
       id: 2,
       title: "Personal Finance Tracker",
       description: "Web application for expense tracking and budgeting",
       longDescription: "In development...",
-      image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto2,
       technologies: ["HTML", "CSS", "JavaScript", "Local Storage"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     },
     {
       id: 3,
       title: "Data Analysis Scripts",
       description: "Python automation tools for data processing",
       longDescription: "A collection of Python scripts developed for automating data analysis tasks in academic projects. Includes tools for data cleaning, statistical analysis, visualization, and report generation. The scripts utilize pandas for data manipulation, matplotlib for visualization, and follow PEP 8 coding standards. Developed using agile practices with version control and iterative improvements based on user feedback.",
-      image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto3,
       technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     }
   ],
   pt: [
@@ -208,30 +207,27 @@ const projectsData: { [key: string]: Project[] } = {
       title: "Sistema de Gestão de Estudantes",
       description: "Projeto acadêmico desenvolvido com Java e banco de dados SQL",
       longDescription: "Em desenvolvimento...",
-      image: "https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto1,
       technologies: ["Java", "MySQL"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     },
     {
       id: 2,
       title: "Rastreador de Finanças Pessoais",
       description: "Aplicação web para controle de gastos e orçamento",
       longDescription: "Em desenvolvimento...",
-      image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto2,
       technologies: ["HTML", "CSS", "JavaScript", "Local Storage"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     },
     {
       id: 3,
       title: "Scripts de Análise de Dados",
       description: "Ferramentas de automação Python para processamento de dados",
       longDescription: "Uma coleção de scripts Python desenvolvidos para automatizar tarefas de análise de dados em projetos acadêmicos. Inclui ferramentas para limpeza de dados, análise estatística, visualização e geração de relatórios. Os scripts utilizam pandas para manipulação de dados, matplotlib para visualização e seguem padrões de codificação PEP 8. Desenvolvido usando práticas ágeis com controle de versão e melhorias iterativas baseadas no feedback dos usuários.",
-      image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: Projeto3,
       technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter"],
-      githubUrl: "#",
-      liveUrl: "#"
+      githubUrl: "#"
     }
   ]
 };
@@ -239,7 +235,7 @@ const projectsData: { [key: string]: Project[] } = {
 function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'pt'>('en');
+  const [language, setLanguage] = useState<'en' | 'pt'>('pt');
 
   const t = translations[language];
   const projects = projectsData[language];
@@ -391,11 +387,11 @@ function App() {
             
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">5+</div>
                 <div className="text-gray-700">{t.about.stats.projects}</div>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="text-3xl font-bold text-purple-600 mb-2">6th</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">6°</div>
                 <div className="text-gray-700">{t.about.stats.period}</div>
               </div>
               <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
@@ -426,7 +422,7 @@ function App() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden cursor-pointer"
+                className="flex flex-col bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="h-48 bg-gray-200 overflow-hidden">
@@ -437,7 +433,7 @@ function App() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>                  
                   <p className="text-gray-600 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 3).map((tech) => (
@@ -525,7 +521,7 @@ function App() {
                   <Github size={24} className="group-hover:scale-110 transition-transform" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/henrique.c1_/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group bg-gradient-to-br from-pink-500 to-purple-600 text-white p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
@@ -617,15 +613,6 @@ function App() {
                   >
                     <Github size={20} />
                     <span>{t.projects.viewCode}</span>
-                  </a>
-                )}
-                {selectedProject.liveUrl && (
-                  <a
-                    href={selectedProject.liveUrl}
-                    className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-shadow"
-                  >
-                    <ExternalLink size={20} />
-                    <span>{t.projects.liveDemo}</span>
                   </a>
                 )}
               </div>
