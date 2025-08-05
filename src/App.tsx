@@ -40,6 +40,8 @@ interface Translations {
       period: string;
       languages: string;
       methodologies: string;
+      agile: string;
+      sufixo: string;
     };
   };
   projects: {
@@ -92,7 +94,9 @@ const translations: { [key: string]: Translations } = {
         projects: "Academic Projects",
         period: "Period Student",
         languages: "Programming Languages",
-        methodologies: "Methodologies"
+        methodologies: "Methodologies",
+        agile: "Agile",
+        sufixo: "th"
       }
     },
     projects: {
@@ -143,7 +147,9 @@ const translations: { [key: string]: Translations } = {
         projects: "Projetos Acadêmicos",
         period: "Período Estudante",
         languages: "Linguagens de Programação",
-        methodologies: "Metodologias"
+        methodologies: "Metodologias",
+        agile: "Ágeis",
+        sufixo: "º"
       }
     },
     projects: {
@@ -193,12 +199,12 @@ const projectsData: { [key: string]: Project[] } = {
     },
     {
       id: 3,
-      title: "Data Analysis Scripts",
-      description: "Python automation tools for data processing",
-      longDescription: "A collection of Python scripts developed for automating data analysis tasks in academic projects. Includes tools for data cleaning, statistical analysis, visualization, and report generation. The scripts utilize pandas for data manipulation, matplotlib for visualization, and follow PEP 8 coding standards. Developed using agile practices with version control and iterative improvements based on user feedback.",
+      title: "PontoFlex",
+      description: "Control system for product inventory and sales",
+      longDescription: "The PontoFlex system is a web-based inventory management application designed for cashiers. It allows users to register, update, and remove products, as well as record sales and discounts. The system also provides detailed cash flow management by tracking incoming and outgoing transactions to generate reports.",
       image: Projeto3,
-      technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter"],
-      githubUrl: "#"
+      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
+      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
     }
   ],
   pt: [
@@ -222,12 +228,12 @@ const projectsData: { [key: string]: Project[] } = {
     },
     {
       id: 3,
-      title: "Scripts de Análise de Dados",
-      description: "Ferramentas de automação Python para processamento de dados",
-      longDescription: "Uma coleção de scripts Python desenvolvidos para automatizar tarefas de análise de dados em projetos acadêmicos. Inclui ferramentas para limpeza de dados, análise estatística, visualização e geração de relatórios. Os scripts utilizam pandas para manipulação de dados, matplotlib para visualização e seguem padrões de codificação PEP 8. Desenvolvido usando práticas ágeis com controle de versão e melhorias iterativas baseadas no feedback dos usuários.",
+      title: "PontoFlex",
+      description: "Sistema de controle de estoque e vendas de produtos",
+      longDescription: "O sistema PontoFlex é uma aplicação web de controle de estoque, voltada para o operador de caixa, cadastra, altera e remove produtos, além de registrar vendas e descontos. O sistema também oferece controle detalhado do fluxo de caixa, registrando entradas e saídas de valores, para gerar relatórios.",
       image: Projeto3,
-      technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter"],
-      githubUrl: "#"
+      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
+      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
     }
   ]
 };
@@ -391,7 +397,7 @@ function App() {
                 <div className="text-gray-700">{t.about.stats.projects}</div>
               </div>
               <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="text-3xl font-bold text-purple-600 mb-2">6°</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">6{t.about.stats.sufixo}</div>
                 <div className="text-gray-700">{t.about.stats.period}</div>
               </div>
               <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
@@ -399,7 +405,7 @@ function App() {
                 <div className="text-gray-700">{t.about.stats.languages}</div>
               </div>
               <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div className="text-3xl font-bold text-orange-600 mb-2">Agile</div>
+                <div className="text-3xl font-bold text-orange-600 mb-2">{t.about.stats.agile}</div>
                 <div className="text-gray-700">{t.about.stats.methodologies}</div>
               </div>
             </div>
@@ -454,6 +460,60 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="relative">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <X size={20} />
+              </button>
+              <div className="h-64 bg-gray-200 overflow-hidden rounded-t-2xl">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            <div className="p-8">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">{selectedProject.title}</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">{selectedProject.longDescription}</p>
+              
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">{t.projects.technologiesUsed}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="flex space-x-4">
+                {selectedProject.githubUrl && (
+                  <a
+                    href={selectedProject.githubUrl}
+                    className="flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                  >
+                    <Github size={20} />
+                    <span>{t.projects.viewCode}</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-white">
@@ -535,7 +595,8 @@ function App() {
                 <p className="text-gray-600 mb-6">
                   {t.contact.connectDescription}
                 </p>
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                onClick={() => window.open("https://www.linkedin.com/in/henrique-carrilho-b51a59245/", "_blank")}>
                   {t.contact.getInTouch}
                 </button>
               </div>
@@ -567,59 +628,7 @@ function App() {
         </div>
       </footer>
 
-      {/* Project Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="relative">
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <X size={20} />
-              </button>
-              <div className="h-64 bg-gray-200 overflow-hidden rounded-t-2xl">
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-            
-            <div className="p-8">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">{selectedProject.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{selectedProject.longDescription}</p>
-              
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">{t.projects.technologiesUsed}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="flex space-x-4">
-                {selectedProject.githubUrl && (
-                  <a
-                    href={selectedProject.githubUrl}
-                    className="flex items-center space-x-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-                  >
-                    <Github size={20} />
-                    <span>{t.projects.viewCode}</span>
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }
