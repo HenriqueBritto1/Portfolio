@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Instagram, ExternalLink, X, Menu, Mail, MapPin, Phone, Globe } from 'lucide-react';
-import Projeto1 from './assets/Projeto1.jpeg';
+import Projeto1 from './assets/Projeto1.jpg';
 import Projeto2 from './assets/Projeto2.jpeg';
 import Projeto3 from './assets/Projeto3.jpeg';
 
@@ -130,7 +130,7 @@ const translations: { [key: string]: Translations } = {
     },
     hero: {
       greeting: "Olá, eu sou",
-      subtitle: "Desenvolvedor Júnior & Estudante de Engenharia de Software apaixonado por criar soluções inovadoras",
+      subtitle: "Desenvolvedor Júnior e Estudante de Engenharia de Software apaixonado por criar soluções inovadoras",
       cta: "Saiba Mais Sobre Mim"
     },
     about: {
@@ -181,12 +181,12 @@ const projectsData: { [key: string]: Project[] } = {
   en: [
     {
       id: 1,
-      title: "Student Management System",
-      description: "Academic project built with Java and SQL database",
-      longDescription: "In development...",
+      title: "PontoFlex",
+      description: "Control system for product inventory and sales",
+      longDescription: "The PontoFlex system is a web-based inventory management application designed for cashiers. It allows users to register, update, and remove products, as well as record sales and discounts. The system also provides detailed cash flow management by tracking incoming and outgoing transactions to generate reports.",
       image: Projeto1,
-      technologies: ["Java", "MySQL"],
-      githubUrl: "#"
+      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
+      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
     },
     {
       id: 2,
@@ -199,23 +199,24 @@ const projectsData: { [key: string]: Project[] } = {
     },
     {
       id: 3,
-      title: "PontoFlex",
-      description: "Control system for product inventory and sales",
-      longDescription: "The PontoFlex system is a web-based inventory management application designed for cashiers. It allows users to register, update, and remove products, as well as record sales and discounts. The system also provides detailed cash flow management by tracking incoming and outgoing transactions to generate reports.",
+      title: "Student Management System",
+      description: "Academic project built with Java and SQL database",
+      longDescription: "In development...",
       image: Projeto3,
-      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
-      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
+      technologies: ["Java", "MySQL"],
+      githubUrl: "#"
     }
+
   ],
   pt: [
     {
       id: 1,
-      title: "Sistema de Gestão de Estudantes",
-      description: "Projeto acadêmico desenvolvido com Java e banco de dados SQL",
-      longDescription: "Em desenvolvimento...",
+      title: "PontoFlex",
+      description: "Sistema de controle de estoque e vendas de produtos",
+      longDescription: "O sistema PontoFlex é uma aplicação web de controle de estoque, voltada para o operador de caixa. Ele permite o cadastro, alteração e remoção de produtos, além de registrar vendas e descontos. O sistema também oferece controle detalhado do fluxo de caixa, registrando entradas e saídas de valores, para gerar relatórios.",
       image: Projeto1,
-      technologies: ["Java", "MySQL"],
-      githubUrl: "#"
+      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
+      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
     },
     {
       id: 2,
@@ -228,12 +229,12 @@ const projectsData: { [key: string]: Project[] } = {
     },
     {
       id: 3,
-      title: "PontoFlex",
-      description: "Sistema de controle de estoque e vendas de produtos",
-      longDescription: "O sistema PontoFlex é uma aplicação web de controle de estoque, voltada para o operador de caixa, cadastra, altera e remove produtos, além de registrar vendas e descontos. O sistema também oferece controle detalhado do fluxo de caixa, registrando entradas e saídas de valores, para gerar relatórios.",
+      title: "Sistema de Gestão de Estudantes",
+      description: "Projeto acadêmico desenvolvido com Java e banco de dados SQL",
+      longDescription: "Em desenvolvimento...",
       image: Projeto3,
-      technologies: ["PHP", "CSS", "Javascript", "Docker", "CakePHP", "MySQL"],
-      githubUrl: "https://github.com/sophya-ribeiro/PDV-PontoFlex"
+      technologies: ["Java", "MySQL"],
+      githubUrl: "#"
     }
   ]
 };
