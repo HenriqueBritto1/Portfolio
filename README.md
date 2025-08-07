@@ -110,6 +110,11 @@ sudo dnf install nodejs npm  # Para Fedora
 ```
 portfolio-website/
 ├── src/
+│   ├── assets/
+│   │   ├── dev.ico
+│   │   ├── Projeto1.jpg
+│   │   ├── Projeto2.jpeg
+│   │   └── Projeto3.jpeg
 │   ├── App.tsx
 │   ├── main.tsx
 │   ├── index.css
